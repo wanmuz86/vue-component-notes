@@ -5,7 +5,9 @@
    
    <Blog v-for="blog in blogs" 
    :key="blog.title"
-   v-bind="blog" />
+   v-bind:blog="blog"
+   v-on:deleted="onDeletedClicked"
+   />
    
   </main>
   </div>
@@ -17,6 +19,15 @@ export default {
   name: 'Main',
   components: {
       Blog
+  },
+  methods:{
+      onDeletedClicked(val){
+       
+          this.blogs = this.blogs.filter(item=>{
+              return item.title != val  
+          })
+         
+      }
   },
   data(){
       return {

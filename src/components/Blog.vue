@@ -4,6 +4,8 @@
  <h2>{{blog.title}}</h2>
  <h6>{{blog.subtitle}}</h6>
  <p>{{blog.content}}</p>
+ <button class="btn btn-danger" v-on:click="buttonPressed()">
+     Delete</button>
  </article>
  </div>
 </template>
@@ -12,7 +14,12 @@
 
 export default {
  name: 'Blog',
- props:['blog']
+ props:['blog'],
+ methods:{
+     buttonPressed(){
+        this.$emit('deleted',this.blog.title)
+     }
+ }
  }
 </script>
 
